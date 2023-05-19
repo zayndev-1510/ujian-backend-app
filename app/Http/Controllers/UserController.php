@@ -34,8 +34,8 @@ class UserController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-
-        return response()->json(compact('token'));
+        $user=auth()->user();
+        return response()->json(compact('token','user'));
     }
 
     public function register(Request $r){
